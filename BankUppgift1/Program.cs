@@ -14,7 +14,7 @@ namespace Bank
         static void Main(string[] args)
         {
             int choice = 0;
-            //testing
+            //testing so many times
             //While är början till en loop som fortsätter tills villkoret inte stämmer längre, i detta fall så länge switch inte är 4
             while (choice != 7)
             {
