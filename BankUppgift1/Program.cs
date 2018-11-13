@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,9 +11,11 @@ namespace Bank
     {
         public static List<Customer> customerlist = new List<Customer>();
 
-
+        public static string Filename = @"C:\Users\willacke\source\repos\BankUppgift1\list.txt";
         static void Main(string[] args)
         {
+            
+            
             int choice = 0;
             //testing so many times
             //While är början till en loop som fortsätter tills villkoret inte stämmer längre, i detta fall så länge switch inte är 4
@@ -66,11 +69,8 @@ namespace Bank
                     //Den här visar upp alla customers som är registrerad
                     case 2:
                         Console.Clear();
-                        foreach (var Customer in customerlist)
-                        {
-                            Console.WriteLine("User: {0}", Customer.name);
-                        }
-                        Console.ReadLine();
+                        Console.WriteLine(File.ReadAllText(Filename));
+                        Console.ReadKey();
                         Console.Clear();
                         break;
 
@@ -135,7 +135,16 @@ namespace Bank
             Customer customer = new Customer();
             customer.name = name;
             customerlist.Add(customer);
+            WriteFile(Filename, customer.name);
+
         }
+
+        public static void WriteFile(string Filename, string name)
+        {
+
+            File.WriteAllText(Filename, name);
+        }
+
 
         //Här är funktionen som tar bort en användare
         public static void removeCustomer()
@@ -153,21 +162,16 @@ namespace Bank
             Console.Clear();
         }
 
-        /*private static void addBalance()
+       
+
+        public static void ReadFile(string Filename, string name)
         {
-            Console.Clear();
-            Console.WriteLine("");
-            Console.WriteLine("Write the full name of the customer you'd like to make a deposit!");
-            int customerBalanceAdd = int.Parse(Console.ReadLine());
-            Customer balanceToAdd = null;
-            balanceToAdd = int.Parse(   Console.ReadLine());
-            foreach (Customer info in customerlist)
+            //Console.WriteLine(File.ReadAllText(Filename));
+            string readFile = File.ReadAllText(Filename);
+            foreach ( var customer in customerlist)
             {
-                if (info.balance == customerBalanceAdd)
-                    balanceToAdd = info;
+                Console.WriteLine(readFile);
             }
-            customerlist.Add(balanceToAdd);
-            Console.Clear();
-        }*/
+        }
     }
 }
