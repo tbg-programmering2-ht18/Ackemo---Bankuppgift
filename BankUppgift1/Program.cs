@@ -11,7 +11,7 @@ namespace Bank
     {
         public static List<Customer> customerlist = new List<Customer>();
 
-        public static string Filename = @"C:\Users\willacke\source\repos\BankUppgift1\list.txt";
+        public static string filename = @"C:\Users\willacke\source\repos\BankUppgift1\list.txt";
         static void Main(string[] args)
         {
             
@@ -62,14 +62,14 @@ namespace Bank
                     case 1:
                         Console.Clear();
                         Console.WriteLine("Add customer");
-                        addCustomer();
+                        AddCustomer();
                         Console.Clear();
                         break;
 
                     //Den här visar upp alla customers som är registrerad
                     case 2:
                         Console.Clear();
-                        Console.WriteLine(File.ReadAllText(Filename));
+                        Console.WriteLine(File.ReadAllText(filename));
                         Console.ReadKey();
                         Console.Clear();
                         break;
@@ -81,7 +81,7 @@ namespace Bank
                         {
                             Console.WriteLine(info.customerInfo());
                         }
-                        removeCustomer();
+                        RemoveCustomer();
                         break;
 
                     case 4:
@@ -127,7 +127,7 @@ namespace Bank
         }
 
         //Här är funktionen som lägger till en användare/customer
-        public static void addCustomer()
+        public static void AddCustomer()
         {
             Console.WriteLine("");
             Console.Write("Name of customer: ");
@@ -135,7 +135,7 @@ namespace Bank
             Customer customer = new Customer();
             customer.name = name;
             customerlist.Add(customer);
-            WriteFile(Filename, customer.name);
+            WriteFile(filename, customer.name);
 
         }
 
@@ -147,7 +147,7 @@ namespace Bank
 
 
         //Här är funktionen som tar bort en användare
-        public static void removeCustomer()
+        public static void RemoveCustomer()
         {
             Console.WriteLine("");
             Console.WriteLine("Write the full name of the customer you'd like to delete!");
